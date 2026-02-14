@@ -203,45 +203,50 @@
     <section class="section cases" id="cases">
       <div class="container">
         <div class="section-head section-head-center">
-          <img class="cases-character" src="assets/robot-growth.png" alt="Робот показывает рост заявок на графике" width="360" height="280">
           <span class="section-label">Кейсы</span>
           <h2 class="section-title">Реальные результаты</h2>
           <p class="section-desc">Реальные предприниматели — реальный рост заявок</p>
         </div>
-        <div class="grid-12 cases-grid">
-          <article class="card case-card case-card-interactive" style="--col: 1 / span 4">
-            <div class="case-chart" aria-hidden="true">
-              <svg viewBox="0 0 120 40" fill="none" stroke="url(#caseGrad1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <defs><linearGradient id="caseGrad1" x1="0" y1="0" x2="120" y2="0"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
-                <path class="case-chart-line" d="M0 35 L20 28 L40 30 L60 22 L80 18 L100 12 L120 8"/>
-              </svg>
+        <div class="cases-block">
+          <div class="cases-character-wrap">
+            <img class="cases-character" src="assets/robot-growth.png" alt="Робот показывает рост заявок на графике" width="360" height="280">
+          </div>
+          <div class="cases-slider-wrap">
+            <button type="button" class="cases-slider-btn cases-slider-prev" aria-label="Предыдущий кейс">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="cases-slider" id="cases-slider">
+              <div class="cases-track">
+                <article class="card case-card">
+                  <div class="case-card-img">
+                    <img src="assets/stat.png" alt="График заявок" width="400" height="200" loading="lazy">
+                  </div>
+                  <div class="case-meta">Услуги · Москва</div>
+                  <p class="case-result"><strong>Рост в 3×</strong> заявок</p>
+                </article>
+                <article class="card case-card">
+                  <div class="case-card-img">
+                    <img src="assets/stat.png" alt="График заявок" width="400" height="200" loading="lazy">
+                  </div>
+                  <div class="case-meta">Товары · СПб</div>
+                  <p class="case-result"><strong>20 заявок</strong> в день</p>
+                </article>
+                <article class="card case-card">
+                  <div class="case-card-img">
+                    <img src="assets/stat.png" alt="График заявок" width="400" height="200" loading="lazy">
+                  </div>
+                  <div class="case-meta">Авто · Регионы</div>
+                  <p class="case-result"><strong>Рост в 2.5×</strong></p>
+                </article>
+              </div>
             </div>
-            <div class="case-meta">Услуги · Москва</div>
-            <p class="case-result"><strong>Рост в 3×</strong> заявок</p>
-          </article>
-          <article class="card case-card case-card-interactive" style="--col: 5 / span 4">
-            <div class="case-chart" aria-hidden="true">
-              <svg viewBox="0 0 120 40" fill="none" stroke="url(#caseGrad2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <defs><linearGradient id="caseGrad2" x1="0" y1="0" x2="120" y2="0"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
-                <path class="case-chart-line" d="M0 38 L25 32 L50 25 L75 15 L100 10 L120 5"/>
-              </svg>
-            </div>
-            <div class="case-meta">Товары · СПб</div>
-            <p class="case-result"><strong>20 заявок</strong> в день</p>
-          </article>
-          <article class="card case-card case-card-interactive" style="--col: 9 / span 4">
-            <div class="case-chart" aria-hidden="true">
-              <svg viewBox="0 0 120 40" fill="none" stroke="url(#caseGrad3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <defs><linearGradient id="caseGrad3" x1="0" y1="0" x2="120" y2="0"><stop stop-color="#38bdf8"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
-                <path class="case-chart-line" d="M0 32 L30 30 L60 20 L90 14 L120 8"/>
-              </svg>
-            </div>
-            <div class="case-meta">Авто · Регионы</div>
-            <p class="case-result"><strong>Рост в 2.5×</strong></p>
-          </article>
-        </div>
-        <div class="section-cta">
-          <a href="#cta" class="btn btn-primary">Попробовать бесплатно</a>
+            <button type="button" class="cases-slider-btn cases-slider-next" aria-label="Следующий кейс">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="section-cta cases-section-cta">
+            <a href="#cta" class="btn btn-primary">Попробовать бесплатно</a>
+          </div>
         </div>
       </div>
     </section>

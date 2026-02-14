@@ -49,23 +49,63 @@
     obs.observe(el.closest('.benefit-card'));
   });
 
-  // Case chart lines: animate stroke on scroll into view
-  document.querySelectorAll('.case-chart-line').forEach(function (path) {
-    var chart = path.closest('.case-chart');
-    if (!chart) return;
-    var length = path.getTotalLength();
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
-    var obs = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) chart.classList.add('animated');
-        });
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(chart.closest('.case-card'));
-  });
+  // Cases slider: infinite loop, prev/next
+  var casesSlider = document.getElementById('cases-slider');
+  var casesTrack = casesSlider && casesSlider.querySelector('.cases-track');
+  var casesPrev = document.querySelector('.cases-slider-prev');
+  var casesNext = document.querySelector('.cases-slider-next');
+  if (casesSlider && casesTrack && casesPrev && casesNext) {
+    var caseCards = casesTrack.querySelectorAll('.case-card');
+    var gap = 32;
+    // Клонируем карточки для бесконечного круга
+    caseCards.forEach(function (card) {
+      casesTrack.appendChild(card.cloneNode(true));
+    });
+    var allCards = casesTrack.querySelectorAll('.case-card');
+    var count = allCards.length / 2;
+
+    function getStep() {
+      var first = allCards[0];
+      return first ? first.offsetWidth + gap : 356;
+    }
+
+    function getSetWidth() {
+      var w = 0;
+      for (var i = 0; i < count; i++) w += allCards[i].offsetWidth + (i < count - 1 ? gap : 0);
+      return w;
+    }
+
+    function clampCasesScroll() {
+      var setWidth = getSetWidth();
+      var left = casesSlider.scrollLeft;
+      if (left >= setWidth - 2) casesSlider.scrollLeft = left - setWidth;
+    }
+
+    casesSlider.addEventListener('scrollend', clampCasesScroll);
+    var casesScrollT;
+    casesSlider.addEventListener('scroll', function () {
+      clearTimeout(casesScrollT);
+      casesScrollT = setTimeout(clampCasesScroll, 150);
+    });
+
+    casesPrev.addEventListener('click', function () {
+      var step = getStep();
+      var setWidth = getSetWidth();
+      if (casesSlider.scrollLeft <= step) {
+        casesSlider.scrollLeft = setWidth - step;
+      }
+      casesSlider.scrollBy({ left: -step, behavior: 'smooth' });
+    });
+
+    casesNext.addEventListener('click', function () {
+      var step = getStep();
+      var setWidth = getSetWidth();
+      if (casesSlider.scrollLeft >= setWidth - step) {
+        casesSlider.scrollLeft = 0;
+      }
+      casesSlider.scrollBy({ left: step, behavior: 'smooth' });
+    });
+  }
 
   // Parallax: hero character and bg on scroll
   var hero = document.querySelector('.hero');
