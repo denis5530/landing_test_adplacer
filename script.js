@@ -137,7 +137,7 @@
   }
 
   // Scroll reveal with stagger
-  var revealEls = document.querySelectorAll('.section-head, .card, .benefit-card, .flow-step, .case-card, .why-item, .price-card, .faq-item, .pain-chart, .pain-content, .benefits-character, .pain-character');
+  var revealEls = document.querySelectorAll('.section-head, .card, .benefit-card, .flow-step, .case-card, .why-item, .price-card, .faq-item, .pain-content, .benefits-character, .pain-character');
   var revealObs = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {

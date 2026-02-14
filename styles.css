@@ -761,7 +761,7 @@ img {
 .benefits-bg {
   position: absolute;
   right: 0;
-  top: -14%;
+  top: calc(-14% + 35px);
   transform: translateY(0);
   z-index: 0;
   pointer-events: none;
@@ -774,7 +774,7 @@ img {
 
 .benefits-bg .benefits-character {
   width: 100%;
-  max-width: 440px;
+  max-width: 360px;
   height: auto;
   object-fit: contain;
   opacity: 0.92;
@@ -1009,11 +1009,8 @@ img {
   background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(6, 182, 212, 0.04) 0%, transparent 50%);
 }
 
-.pain-character {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  object-fit: contain;
+.pain-section-head {
+  margin-bottom: var(--space-6);
 }
 
 .pain-layout {
@@ -1021,6 +1018,24 @@ img {
   grid-template-columns: 1fr 1fr;
   gap: clamp(var(--space-6), 6vw, var(--space-12));
   align-items: center;
+}
+
+.pain-list-intro {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--cyan);
+  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pain-list-outro {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
 }
 
 .pain-list {
@@ -1031,60 +1046,68 @@ img {
   font-size: var(--text-lg);
   color: var(--text-muted);
   margin-bottom: var(--space-3);
-  padding-left: var(--space-4);
+  padding-left: var(--space-5);
   position: relative;
   line-height: var(--leading-relaxed);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
+
+.pain.in-view .pain-list li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pain.in-view .pain-list li:nth-child(1) { transition-delay: 0.1s; }
+.pain.in-view .pain-list li:nth-child(2) { transition-delay: 0.2s; }
+.pain.in-view .pain-list li:nth-child(3) { transition-delay: 0.3s; }
 
 .pain-list li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 10px;
-  width: 6px;
-  height: 6px;
-  background: var(--cyan);
-  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--cyan), var(--cyan-light));
+  border-radius: var(--radius-pill);
 }
 
-.pain-list strong { color: var(--cyan); }
+.pain-list strong {
+  color: var(--cyan);
+  font-weight: var(--weight-semibold);
+  background: rgba(6, 182, 212, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  margin-right: 2px;
+}
 
-.pain-chart {
+.pain-viz-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pain-viz {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  max-width: 320px;
-}
-
-.pain-chart-row {
-  display: grid;
-  grid-template-columns: 100px 1fr 48px;
   align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
-  color: var(--text-muted);
+  justify-content: center;
 }
 
-.pain-chart-bar-wrap {
-  height: 36px;
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: var(--radius);
-  overflow: hidden;
+.pain-character {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(6, 182, 212, 0.15));
 }
-
-.pain-chart-bar {
-  height: 100%;
-  width: 0;
-  border-radius: var(--radius);
-  transition: width 1s ease;
-}
-
-.pain.in-view .pain-chart-bar {
-  width: var(--w);
-}
-
-.pain-chart-bar-low { background: var(--text-dim); }
-.pain-chart-bar-high { background: linear-gradient(90deg, var(--blue-mid), var(--cyan)); }
 
 .flow-character,
 .how-character {
@@ -1276,22 +1299,11 @@ img {
   object-fit: contain;
 }
 
-.pain-chart-pct { font-weight: var(--weight-semibold); color: var(--text); }
-
-.pain-viz {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
 .pain-robot svg {
   width: 80px;
   height: 80px;
   opacity: 0.9;
 }
-
-.pain.in-view .pain-chart-bar { width: var(--w); }
 
 /* ===== How it works ----- */
 .how {
@@ -1803,7 +1815,7 @@ img {
   }
   .benefits-grid > * { grid-column: auto !important; }
   .benefit-card { padding: var(--space-4); }
-  .benefits-bg { width: 60%; max-width: 480px; opacity: 0.9; }
+  .benefits-bg { width: 50%; max-width: 400px; opacity: 0.9; }
   .benefits-bg .benefits-character { max-width: 100%; }
   .benefits-cta { text-align: center; margin-top: var(--space-4); }
   .pain-layout {
@@ -1811,11 +1823,13 @@ img {
     gap: var(--space-6);
     text-align: center;
   }
-  .pain-content { order: 1; }
-  .pain-viz { order: 2; align-items: center; }
-  .pain-list li { padding-left: 0; }
-  .pain-list li::before { display: none; }
-  .pain-chart { margin: 0 auto; }
+  .pain-content { order: 1; text-align: center; }
+  .pain-list-intro { text-align: center; }
+  .pain-list-outro { text-align: center; }
+  .pain-viz-card { order: 2; margin-top: var(--space-2); }
+  .pain-viz { align-items: center; }
+  .pain-list { display: inline-block; text-align: left; }
+  .pain-list li { padding-left: var(--space-5); }
   .pain-character { max-width: 280px; }
   .flow {
     display: flex;
@@ -1872,18 +1886,14 @@ img {
   .benefits-grid { grid-template-columns: 1fr; }
   .benefit-card { padding: var(--space-4) var(--space-3); }
   .benefit-num { font-size: 2rem; }
-  .benefits-bg { width: 100%; max-width: 380px; left: 50%; right: auto; transform: translate(-50%, -50%); }
+  .benefits-bg { width: 100%; max-width: 320px; left: 50%; right: auto; transform: translate(-50%, -50%); }
   .benefits-bg .benefits-character { max-width: 100%; opacity: 0.85; }
   .benefits-cta { text-align: center; margin-top: var(--space-4); }
   .benefits-cta .btn { width: 100%; max-width: 320px; }
   .pain-layout { gap: var(--space-4); }
+  .pain-content { margin-bottom: var(--space-2); }
+  .pain-viz-card { padding: var(--space-4); }
   .pain-list li { font-size: var(--text-base); margin-bottom: var(--space-2); }
-  .pain-chart-row {
-    grid-template-columns: 80px 1fr 40px;
-    gap: var(--space-1);
-    font-size: var(--text-xs);
-  }
-  .pain-chart-bar-wrap { height: 28px; }
   .flow-step { padding: var(--space-4); min-height: 0; }
   .flow-num { width: 44px; height: 44px; font-size: var(--text-lg); }
   .how-cta { margin-top: var(--space-6); }
@@ -1925,7 +1935,6 @@ img {
   .section-cta { margin-top: var(--space-4); }
   .section-cta .btn { width: 100%; max-width: 320px; }
   .benefit-card h3 { font-size: var(--text-base); }
-  .pain-chart-row { grid-template-columns: 70px 1fr 36px; }
   .flow-step h3 { font-size: var(--text-base); }
   .price-name { font-size: var(--text-lg); }
   .price-value { font-size: 1.5rem; }
@@ -1950,7 +1959,6 @@ img {
   .card { padding: var(--space-3); }
   .benefit-num { font-size: 1.75rem; }
   .pain-list li { font-size: var(--text-sm); }
-  .pain-chart-row { grid-template-columns: 60px 1fr 32px; font-size: 0.65rem; }
   .flow-num { width: 40px; height: 40px; font-size: var(--text-base); }
   .flow-step { padding: var(--space-4) var(--space-3); }
   .how-cta { margin-top: var(--space-5); }
@@ -1977,8 +1985,6 @@ img {
   .benefit-card { padding: var(--space-2) var(--space-1); }
   .benefit-num { font-size: 1.5rem; }
   .benefit-card h3 { font-size: var(--text-sm); }
-  .pain-chart-row { grid-template-columns: 52px 1fr 26px; gap: 6px; font-size: 0.65rem; }
-  .pain-chart-bar-wrap { height: 24px; }
   .flow-step h3 { font-size: var(--text-sm); }
   .flow-step p { font-size: var(--text-xs); }
   .price-name { font-size: var(--text-sm); }
