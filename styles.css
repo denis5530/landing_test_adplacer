@@ -959,16 +959,54 @@ img {
   margin-bottom: var(--space-2);
 }
 
-/* ===== Pain block ----- */
+/* ===== Pain block (фон как у hero: градиент + два glow + шум) ----- */
 .pain {
-  background: var(--bg-elevated);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #F8FBFF 0%, #F3F7FF 100%);
+}
+.pain::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.18) 0%, transparent 60%);
+  top: -150px;
+  right: -150px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.pain::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 120, 255, 0.12) 0%, transparent 60%);
+  bottom: -150px;
+  left: -150px;
+  filter: blur(40px);
+  pointer-events: none;
 }
 
 .pain-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(6, 182, 212, 0.04) 0%, transparent 50%);
+  overflow: hidden;
   pointer-events: none;
+}
+.pain-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+.pain-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(6, 182, 212, 0.04) 0%, transparent 50%);
 }
 
 .pain-character {
@@ -1055,6 +1093,49 @@ img {
   height: auto;
   object-fit: contain;
   margin: 0 auto;
+}
+
+/* ----- Cases: тот же фон, что у hero (градиент + два glow + шум) ----- */
+.section.cases {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #F8FBFF 0%, #F3F7FF 100%);
+}
+.section.cases::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.18) 0%, transparent 60%);
+  top: -150px;
+  right: -150px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.section.cases::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 120, 255, 0.12) 0%, transparent 60%);
+  bottom: -150px;
+  left: -150px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.cases-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.cases-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
 /* ----- Cases: блок с роботом, слайдером и CTA; робот внизу по уровню кнопки ----- */
@@ -1335,6 +1416,48 @@ img {
 .why-item p { font-size: var(--text-sm); color: var(--text-muted); }
 
 /* ===== Pricing (Airbnb: clear hierarchy, pill CTAs) ----- */
+.section.pricing {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #F8FBFF 0%, #F3F7FF 100%);
+}
+.section.pricing::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.18) 0%, transparent 60%);
+  top: -150px;
+  right: -150px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.section.pricing::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 120, 255, 0.12) 0%, transparent 60%);
+  bottom: -150px;
+  left: -150px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.pricing-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.pricing-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
