@@ -951,13 +951,32 @@ img {
   line-height: var(--leading-normal);
 }
 
+.benefit-num-wrap {
+  display: block;
+  margin-bottom: var(--space-2);
+}
+.benefit-num-wrap-div {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.benefit-num-prefix {
+  font-size: 2.5rem;
+  font-weight: var(--weight-extrabold);
+  color: var(--cyan);
+  line-height: var(--leading-tight);
+}
 .benefit-num {
   font-size: 2.5rem;
   font-weight: var(--weight-extrabold);
   color: var(--cyan);
   line-height: var(--leading-tight);
-  margin-bottom: var(--space-2);
+  margin-bottom: 0;
 }
+.benefit-num-wrap .benefit-num { margin-bottom: 0; }
+.benefit-num-wrap-div { font-size: 2.5rem; }
+.benefit-num-wrap-div .benefit-num-prefix,
+.benefit-num-wrap-div .benefit-num { font-size: 1em; }
 
 /* ===== Pain block (фон как у hero: градиент + два glow + шум) ----- */
 .pain {
@@ -1892,6 +1911,7 @@ img {
   .benefits-grid { grid-template-columns: 1fr; }
   .benefit-card { padding: var(--space-4) var(--space-3); }
   .benefit-num { font-size: 2rem; }
+  .benefit-num-wrap-div { font-size: 2rem; }
   .benefits-bg { width: 100%; max-width: 320px; left: 50%; right: auto; transform: translate(-50%, -50%); }
   .benefits-bg .benefits-character { max-width: 100%; opacity: 0.85; }
   .benefits-cta { text-align: center; margin-top: var(--space-4); }
@@ -1964,6 +1984,7 @@ img {
   .section-title { font-size: 1.25rem; }
   .card { padding: var(--space-3); }
   .benefit-num { font-size: 1.75rem; }
+  .benefit-num-wrap-div { font-size: 1.75rem; }
   .pain-list li { font-size: var(--text-sm); }
   .flow-num { width: 40px; height: 40px; font-size: var(--text-base); }
   .flow-step { padding: var(--space-4) var(--space-3); }
@@ -1990,6 +2011,7 @@ img {
   .section-title { font-size: 1.125rem; }
   .benefit-card { padding: var(--space-2) var(--space-1); }
   .benefit-num { font-size: 1.5rem; }
+  .benefit-num-wrap-div { font-size: 1.5rem; }
   .benefit-card h3 { font-size: var(--text-sm); }
   .flow-step h3 { font-size: var(--text-sm); }
   .flow-step p { font-size: var(--text-xs); }
