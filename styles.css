@@ -1493,8 +1493,19 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-3);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
   align-items: stretch;
+}
+
+.pricing-cta {
+  text-align: center;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+.pricing-cta .btn {
+  min-height: 56px;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
 }
 
 .price-card {
