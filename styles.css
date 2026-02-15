@@ -1529,9 +1529,10 @@ img {
 .price-wrap {
   margin-bottom: var(--space-3);
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-2);
+  align-items: flex-start;
+  gap: var(--space-1);
 }
 
 .price-value {
@@ -1541,11 +1542,16 @@ img {
   transition: color var(--transition);
 }
 
+.price-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
 .price-old {
   font-size: var(--text-sm);
   color: var(--text-dim);
   text-decoration: line-through;
-  margin-right: var(--space-1);
 }
 
 .price-discount {
