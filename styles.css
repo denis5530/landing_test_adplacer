@@ -1287,41 +1287,61 @@ img {
 }
 .case-result strong { color: var(--cyan); }
 
-/* CTA-карточка внутри кейсового слайдера */
+/* CTA-карточка внутри кейсового слайдера — те же размеры, сетка, радиус, тень что и кейсы */
 .case-card-cta {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-card-cta-top {
+  width: 100%;
+  height: 160px;
+  flex-shrink: 0;
+  margin: 0;
   padding: var(--space-4);
+  background: var(--blue-mid);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.case-card-cta-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='36' viewBox='0 0 60 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28 L8 24 L16 26 L24 20 L32 22 L40 16 L48 18 L60 12' stroke='white' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") repeat-x bottom center;
+  pointer-events: none;
+  opacity: 0.07;
+}
+
+.case-card-cta-headline {
+  position: relative;
+  margin: 0;
+  font-family: 'Caveat', cursive;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+  text-align: center;
+}
+
+.case-card-cta-body {
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
-.case-card-cta .case-card-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-3);
-  text-align: left;
-}
-
-.case-card-cta .case-meta {
-  padding-top: 0;
-  margin-bottom: var(--space-2);
-  font-size: var(--text-lg);
-  font-weight: var(--weight-bold);
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--text);
-}
-
-.case-card-cta .case-result {
-  padding: 0;
-  font-size: var(--text-base);
-  color: var(--text);
-}
-
-.case-card-cta-btn {
+.case-card-cta-body .btn {
+  width: 100%;
   min-height: 44px;
-  padding: var(--space-2) var(--space-5);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
 }
 
 .cases-slider-btn {
@@ -2389,6 +2409,8 @@ img {
   .cases-character { max-width: 300px; max-height: 180px; }
   .case-card { flex: 0 0 min(280px, 88vw); width: min(280px, 88vw); }
   .case-card-img { height: 140px; }
+  .case-card-cta-top { height: 140px; padding: var(--space-3); }
+  .case-card-cta-headline { font-size: 1.875rem; }
   .cases-slider-wrap { gap: var(--space-2); }
   .cases-section-cta { margin-top: var(--space-4); }
   .why-grid { grid-template-columns: 1fr; gap: var(--space-2); }
