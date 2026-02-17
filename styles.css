@@ -1853,20 +1853,20 @@ img {
    Все с небольшим отступом, чтобы визуально не касаться робота. */
 .final-gift-1 {
   top: -120px;      /* слева сверху относительно робота, ещё выше графика */
-  right: 200px;     /* левее на 100px (увеличили right) */
-  --gift-scale: 0.45;
+  right: 150px;     /* сместили вправо на 50px (уменьшили right) */
+  --gift-scale: 0.6;
   animation-delay: 0s;
 }
 
 .final-gift-2 {
-  top: -130px;      /* ниже на 50px */
-  right: -100px;    /* правее на 70px (уменьшили right) */
+  top: -150px;      /* подняли ещё на 20px вверх */
+  right: -130px;    /* сместили на 20px левее (увеличили right) */
   --gift-scale: 0.5;
   animation-delay: 0.6s;
 }
 
 .final-gift-3 {
-  top: 20px;        /* ниже на 60px */
+  top: 50px;        /* ещё ниже на 30px */
   right: -210px;    /* правее на 40px (уменьшили right) */
   --gift-scale: 0.45;
   animation-delay: 1.2s;
