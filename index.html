@@ -137,26 +137,62 @@
 
     <section class="section pain" id="pain" aria-labelledby="pain-title">
       <div class="pain-bg"></div>
-      <div class="container">
-        <div class="section-head section-head-center pain-section-head">
+      <div class="pain-viz" aria-hidden="true">
+        <img class="pain-character" src="assets/robot-pain.png" alt="" width="320" height="280">
+      </div>
+      <div class="container pain-container">
+        <div class="section-head pain-section-head">
           <span class="section-label">Проблема</span>
-          <h2 class="section-title" id="pain-title">Почему обычная публикация не работает</h2>
-          <p class="section-desc">Без системы вы теряете заявки и бюджет</p>
+          <h2 class="section-title pain-title" id="pain-title">Что вы сейчас теряете</h2>
+          <p class="section-desc pain-subtitle">Типичные потери без автоматизации</p>
         </div>
         <div class="pain-layout">
-          <div class="pain-viz-card">
-            <div class="pain-viz">
-              <img class="pain-character" src="assets/robot-pain.png" alt="Робот смотрит на падающий график — без системы теряете заявки" width="320" height="280">
-            </div>
-          </div>
           <div class="pain-content">
-            <p class="pain-list-intro">Типичные потери без автоматизации</p>
-            <ul class="pain-list">
-              <li><strong>До 70%</strong> дешёвого трафика уходит впустую</li>
-              <li><strong>В 3 раза меньше</strong> заявок, чем с автоматизацией</li>
-              <li><strong>400+ ваших заявок в месяц</strong> достаются конкурентам</li>
-            </ul>
-            <p class="pain-list-outro">Всё это можно вернуть системой: один шаблон, настройка раз в месяц — и заявки растут без лишних затрат</p>
+            <div class="pain-cards" role="list">
+              <div class="pain-card" role="listitem">
+                <span class="pain-card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 22V8l5 4 5-6 5 8 5-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="pain-card-num">До 70% трафика теряется</span>
+                <p class="pain-card-text">Дешёвые показы проходят мимо ваших объявлений</p>
+              </div>
+              <div class="pain-card" role="listitem">
+                <span class="pain-card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="14" width="5" height="8" rx="1.5" fill="currentColor" opacity="0.4"/><rect x="14" y="6" width="5" height="16" rx="1.5" fill="currentColor"/></svg>
+                </span>
+                <span class="pain-card-num">В 3 раза меньше обращений</span>
+                <p class="pain-card-text">Без автоматизации объявления теряют позиции и видимость</p>
+              </div>
+              <div class="pain-card" role="listitem">
+                <span class="pain-card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 14h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 8v12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><path d="M24 8v12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/></svg>
+                </span>
+                <span class="pain-card-num">400+ заявок проходят мимо</span>
+                <p class="pain-card-text">Конкуренты получают обращения, которые могли быть вашими</p>
+              </div>
+              <div class="pain-cta-card" role="listitem">
+                <div class="pain-cta-sticker" aria-hidden="true">
+                  <img class="pain-cta-sticker-img pain-cta-sticker-default" src="assets/pain_top.png" alt="">
+                  <img class="pain-cta-sticker-img pain-cta-sticker-active" src="assets/pain_top_active.png" alt="">
+                </div>
+                <div class="pain-cta-content">
+                  <h3 class="pain-cta-title">Хватит терять заявки.</h3>
+                  <p class="pain-cta-text">
+                    Верните их <span class="pain-cta-highlight">системой</span>: один шаблон, настройка раз в месяц —
+                    и <span class="pain-cta-highlight">стабильный поток</span> без лишних затрат.
+                  </p>
+                  <div class="pain-cta-actions">
+                    <a href="#how" class="pain-cta-btn btn btn-primary">
+                      <span>Узнать решение</span>
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </a>
+                    <span class="pain-cta-microcopy">3 простых шага до стабильных заявок</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
