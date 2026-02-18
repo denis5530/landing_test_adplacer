@@ -96,6 +96,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   min-width: 320px;
+  padding-top: 80px; /* высота шапки, т.к. header position: fixed */
 }
 
 /* Все контентные изображения по умолчанию адаптивны */
@@ -133,8 +134,10 @@ img {
 
 /* ===== Header ----- */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px);
@@ -289,6 +292,7 @@ img {
   .btn-nav { display: none; }
   .burger { display: flex; }
   .header-inner { height: 72px; }
+  body { padding-top: 72px; }
   .nav.nav-open {
     display: flex;
     flex-direction: column;
@@ -1311,18 +1315,25 @@ img {
 /* при ховере на карточку — кнопка слегка шевелится, зазывая нажать */
 .pain-cta-card:hover .pain-cta-btn {
   animation: pain-cta-btn-tease 2s ease-in-out infinite;
+  box-shadow:
+    0 12px 32px rgba(6, 182, 212, 0.35),
+    0 0 28px rgba(56, 189, 248, 0.7);
 }
 
 /* при ховере на саму кнопку — анимация выключается, остаётся обычный эффект кнопки */
 .pain-cta-card:hover .pain-cta-btn:hover {
   animation: none;
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(6, 182, 212, 0.35);
+  box-shadow:
+    0 12px 32px rgba(6, 182, 212, 0.35),
+    0 0 28px rgba(56, 189, 248, 0.7);
 }
 
 .pain-cta-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(6, 182, 212, 0.35);
+  box-shadow:
+    0 12px 32px rgba(6, 182, 212, 0.35),
+    0 0 28px rgba(56, 189, 248, 0.7);
 }
 
 .pain-cta-btn svg {
@@ -2719,6 +2730,7 @@ img {
 @media (max-width: 360px) {
   .container { padding: 0 var(--space-1); }
   .header-inner { height: 64px; padding: 0 var(--space-2); }
+  body { padding-top: 64px; }
   .logo-img { height: 28px; }
   .hero { padding: var(--space-4) 0 var(--space-3); }
   .hero-number { font-size: 1.875rem; }

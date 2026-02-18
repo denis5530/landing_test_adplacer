@@ -26,7 +26,15 @@
       if (id === '#') return;
       e.preventDefault();
       var el = document.querySelector(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!el) return;
+
+      // учитываем высоту фиксированного хедера, чтобы секция встала ровно под ним
+      var header = document.querySelector('.header');
+      var headerOffset = header ? header.offsetHeight : 0;
+      var rect = el.getBoundingClientRect();
+      var targetTop = rect.top + window.pageYOffset - headerOffset;
+
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
     });
   });
 
