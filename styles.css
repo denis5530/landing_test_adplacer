@@ -439,7 +439,8 @@ main img:hover {
   width: 58%;
   min-width: 320px;
   max-width: 620px;
-  transition: transform 1.4s cubic-bezier(0.33, 1, 0.68, 1);
+  opacity: 0.65;
+  transition: transform 1.4s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.5s ease-in-out;
   transform-origin: center center;
 }
 .hero-bg-stat {
@@ -479,9 +480,10 @@ main img:hover {
   animation-duration: 2s;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.05)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
 }
-/* Плавное увеличение и сдвиг вправо при наведении на кнопку */
+/* Плавное увеличение, сдвиг вправо и уход прозрачности при наведении на кнопку */
 .hero:has(.btn-hero:hover) .hero-bg-stat-wrap {
   transform: scale(1.22) translateX(32px);
+  opacity: 1;
 }
 .hero:has(.btn-hero:hover) .hero-bg-stat {
   filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.08)) drop-shadow(0 0 22px rgba(56, 189, 248, 0.55));
@@ -667,6 +669,7 @@ main img:hover {
   max-width: 420px;
   min-height: 200px;
   margin-top: auto;
+  transform: translateX(-48px); /* робот, кнопка и подпись левее; фон (стата, элементы) не двигаем */
 }
 
 .hero-cta-robot-wrap {
