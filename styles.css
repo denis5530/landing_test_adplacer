@@ -479,7 +479,7 @@ main img:hover {
   animation-duration: 2s;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.05)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
 }
-/* Плавное увеличение и сдвиг вправо — через transition обёртки */
+/* Плавное увеличение и сдвиг вправо при наведении на кнопку */
 .hero:has(.btn-hero:hover) .hero-bg-stat-wrap {
   transform: scale(1.22) translateX(32px);
 }
