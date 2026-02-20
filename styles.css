@@ -116,10 +116,7 @@ main img:hover {
 }
 
 /* Картинки с pointer-events: none светятся при наведении на родителя */
-/* Робот в hero светится только при наведении именно на кнопку */
-.hero:has(.btn-hero:hover) .hero-cta-robot {
-  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
-}
+/* Робот в hero: смена картинки и свечение при наведении на кнопку — в .hero-cta-robot-hover */
 .benefits-content:hover .benefits-character,
 .pain-content:hover .pain-character,
 .hero-bg-stat:hover img {
@@ -672,20 +669,47 @@ main img:hover {
   margin-top: auto;
 }
 
-.hero-cta-robot {
+.hero-cta-robot-wrap {
   position: absolute;
   left: 50%;
   transform: translateX(calc(-72% + 50px)) scale(1.2);
-  bottom: 113px; /* опустили на 1px для точной подгонки */
+  bottom: 113px;
   margin-bottom: -14px;
   width: 128%;
   max-width: 280px;
+  transform-origin: bottom center;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero-cta-robot-wrap .hero-cta-robot,
+.hero-cta-robot-wrap .hero-cta-robot-hover {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   height: auto;
   object-fit: contain;
   object-position: bottom center;
-  transform-origin: bottom center;
-  pointer-events: none;
-  z-index: 3; /* поверх кнопки */
+  display: block;
+  transition: opacity 0.85s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.hero-cta-robot-wrap .hero-cta-robot {
+  opacity: 1;
+}
+
+.hero-cta-robot-wrap .hero-cta-robot-hover {
+  opacity: 0;
+}
+
+.hero:has(.btn-hero:hover) .hero-cta-robot-wrap .hero-cta-robot {
+  opacity: 0;
+}
+
+.hero:has(.btn-hero:hover) .hero-cta-robot-wrap .hero-cta-robot-hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
 }
 
 @keyframes hero-cta-robot-float {
@@ -2754,7 +2778,7 @@ main img:hover {
   .hero-visual { order: 1; justify-content: center; }
   .hero-subtitle { max-width: none; margin-left: auto; margin-right: auto; }
   .hero-cta-block { max-width: 320px; min-height: 200px; }
-  .hero-cta-robot { max-width: 240px; width: 130%; margin-bottom: -10px; }
+  .hero-cta-robot-wrap { max-width: 240px; width: 130%; margin-bottom: -10px; }
   .hero-cta-wrap { margin-bottom: var(--space-2); }
   .hero-glow-4 { width: 52%; height: 72%; right: 50%; transform: translate(46%, -50%); max-height: 320px; }
   .hero-bg-pill { height: 54%; width: 52%; top: 50%; right: 50%; transform: translate(44%, -50%); max-height: 300px; opacity: 0.32; }
@@ -2825,7 +2849,7 @@ main img:hover {
   .hero-title-context { font-size: var(--text-xl); }
   .hero-subtitle { font-size: var(--text-base); }
   .btn-hero { padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
-  .hero-cta-robot { max-width: 210px; width: 125%; margin-bottom: -9px; }
+  .hero-cta-robot-wrap { max-width: 210px; width: 125%; margin-bottom: -9px; }
   .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
   .section-head { margin-bottom: var(--space-6); }
   .section-character { width: 48px; height: 48px; }
