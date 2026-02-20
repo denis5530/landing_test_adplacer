@@ -106,6 +106,28 @@ img {
   vertical-align: middle;
 }
 
+/* Свечение картинок при наведении по всей странице */
+main img {
+  transition: filter var(--transition);
+}
+main img:hover {
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
+}
+
+/* Картинки с pointer-events: none светятся при наведении на родителя */
+/* Робот в hero светится только при наведении именно на кнопку */
+.hero:has(.btn-hero:hover) .hero-cta-robot {
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
+}
+.benefits-content:hover .benefits-character,
+.pain-content:hover .pain-character,
+.hero-bg-stat:hover img {
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
+}
+.cases-character-wrap:hover .cases-character {
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
+}
+
 /* Very subtle noise on white */
 .noise {
   position: fixed;
@@ -394,6 +416,11 @@ img {
   width: 100%;
   height: auto;
   display: block;
+  transition: filter var(--transition);
+}
+.hero-bg-stat {
+  transition: filter var(--transition), transform 0.5s ease-out;
+  transform-origin: center center;
 }
 .hero-bg-elem {
   position: absolute;
@@ -405,6 +432,7 @@ img {
   opacity: 0.82;
   animation: hero-bg-elem-float 6s var(--ease-in-out) infinite;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.05));
+  transition: filter var(--transition);
 }
 .hero-bg-elem-1 { top: 6%; right: 12%; animation-delay: 0s; }
 .hero-bg-elem-2 { top: 24%; right: 22%; animation-delay: -1.2s; }
@@ -413,6 +441,24 @@ img {
 @keyframes hero-bg-elem-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
+}
+
+/* Только при наведении именно на кнопку: фоновые картинки светятся и двигаются быстрее */
+.hero:has(.btn-hero:hover) .hero-bg-elem {
+  animation-duration: 2s;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.05)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
+}
+.hero:has(.btn-hero:hover) .hero-bg-stat {
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.08)) drop-shadow(0 0 22px rgba(56, 189, 248, 0.55));
+  transform: scale(1.08) rotate(-5deg);
+  animation: hero-bg-stat-float 2.5s ease-in-out infinite;
+}
+.hero:has(.btn-hero:hover) .hero-bg-stat img {
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
+}
+@keyframes hero-bg-stat-float {
+  0%, 100% { transform: scale(1.08) rotate(-5deg) translateY(0); }
+  50% { transform: scale(1.08) rotate(-5deg) translateY(-6px); }
 }
 
 .hero-glow {
@@ -571,22 +617,22 @@ img {
 .hero-cta-robot {
   position: absolute;
   left: 50%;
-  transform: translateX(-72%);
-  bottom: 35px;
+  transform: translateX(calc(-72% + 50px)) scale(1.2);
+  bottom: 113px; /* опустили на 1px для точной подгонки */
   margin-bottom: -14px;
   width: 128%;
   max-width: 280px;
   height: auto;
   object-fit: contain;
   object-position: bottom center;
+  transform-origin: bottom center;
   pointer-events: none;
-  z-index: 1;
-  animation: hero-cta-robot-float 5s var(--ease-in-out) infinite;
+  z-index: 3; /* поверх кнопки */
 }
 
 @keyframes hero-cta-robot-float {
-  0%, 100% { transform: translateX(-72%) translateY(0); }
-  50% { transform: translateX(-72%) translateY(-6px); }
+  0%, 100% { transform: translateX(calc(-72% + 50px)) translateY(0) scale(1.2); }
+  50% { transform: translateX(calc(-72% + 50px)) translateY(-6px) scale(1.2); }
 }
 
 .hero-cta-wrap {
@@ -601,6 +647,16 @@ img {
 
 .hero-cta-wrap .btn-hero {
   width: 100%;
+}
+
+/* кнопка в hero: без движения при наведении, при наведении — яркое свечение (отключаем pulse, чтобы свечение было видно) */
+.hero-cta-wrap .btn-hero:hover {
+  transform: none;
+  animation: none;
+  box-shadow:
+    0 12px 32px rgba(6, 182, 212, 0.4),
+    0 0 32px rgba(56, 189, 248, 0.8),
+    0 0 48px rgba(56, 189, 248, 0.4);
 }
 
 .hero-cta-wrap .hero-trust {
