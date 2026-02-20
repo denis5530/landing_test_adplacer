@@ -1661,7 +1661,8 @@ main img:hover {
   filter: drop-shadow(0 8px 24px rgba(6, 182, 212, 0.18));
 }
 
-.cases-character-active {
+.cases-character-active,
+.cases-character-active-next {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -1672,12 +1673,21 @@ main img:hover {
   pointer-events: none;
 }
 
-/* При клике на стрелку — короткий кроссфейд (opacity) + scale и свечение у active */
+/* При клике на левую стрелку — cases_active */
 .cases-character-wrap.is-flipping .cases-character-default {
   opacity: 0;
 }
-
 .cases-character-wrap.is-flipping .cases-character-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
+}
+
+/* При клике на правую стрелку — cases_active_right_btn */
+.cases-character-wrap.is-flipping-next .cases-character-default {
+  opacity: 0;
+}
+.cases-character-wrap.is-flipping-next .cases-character-active-next {
   opacity: 1;
   transform: translateX(0) scale(1);
   filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
@@ -1687,7 +1697,8 @@ main img:hover {
 .cases-block:hover .cases-character-default {
   filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
 }
-.cases-block:hover .cases-character-active {
+.cases-block:hover .cases-character-active,
+.cases-block:hover .cases-character-active-next {
   filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.65));
 }
 
@@ -1850,6 +1861,17 @@ main img:hover {
   background: var(--bg-elevated);
   color: var(--cyan);
   box-shadow: var(--shadow-lg);
+}
+
+.cases-slider-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  color: var(--text-dim);
+}
+.cases-slider-btn:disabled:hover {
+  background: var(--bg);
+  color: var(--text-dim);
+  box-shadow: var(--shadow-md);
 }
 
 .cases-section-cta {

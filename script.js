@@ -57,54 +57,61 @@
     obs.observe(el.closest('.benefit-card'));
   });
 
-  // Cases slider: infinite loop, prev/next
+  // Cases slider: по одному слайду, без повтора — только 4 карточки (3 кейса + CTA), в конце листать нельзя
   var casesSlider = document.getElementById('cases-slider');
   var casesTrack = casesSlider && casesSlider.querySelector('.cases-track');
   var casesPrev = document.querySelector('.cases-slider-prev');
   var casesNext = document.querySelector('.cases-slider-next');
   if (casesSlider && casesTrack && casesPrev && casesNext) {
-    var caseCards = casesTrack.querySelectorAll('.case-card');
-    var gap = 32;
-    // Клонируем карточки для бесконечного круга
-    caseCards.forEach(function (card) {
-      casesTrack.appendChild(card.cloneNode(true));
-    });
+    var gap = 32; // var(--space-4)
     var allCards = casesTrack.querySelectorAll('.case-card');
-    var count = allCards.length / 2;
+    var count = allCards.length; // 4: 3 кейса + CTA
+
+    function getCardWidth(i) {
+      return allCards[i] ? allCards[i].offsetWidth : 320;
+    }
 
     function getStep() {
-      var first = allCards[0];
-      return first ? first.offsetWidth + gap : 356;
+      return getCardWidth(0) + gap;
     }
 
-    function getSetWidth() {
-      var w = 0;
-      for (var i = 0; i < count; i++) w += allCards[i].offsetWidth + (i < count - 1 ? gap : 0);
-      return w;
+    function getScrollPosForIndex(index) {
+      var pos = 0;
+      for (var i = 0; i < index; i++) pos += getCardWidth(i) + gap;
+      return pos;
     }
 
-    function clampCasesScroll() {
-      var setWidth = getSetWidth();
-      var left = casesSlider.scrollLeft;
-      if (left >= setWidth - 2) casesSlider.scrollLeft = left - setWidth;
+    function getMaxScrollLeft() {
+      return getScrollPosForIndex(count - 1);
     }
 
-    casesSlider.addEventListener('scrollend', clampCasesScroll);
-    var casesScrollT;
+    function updateCasesButtons() {
+      var left = Math.round(casesSlider.scrollLeft);
+      var lastCardPos = getMaxScrollLeft();
+      var maxScroll = casesSlider.scrollWidth - casesSlider.clientWidth;
+      var atStart = left <= 5;
+      var atEnd = left >= lastCardPos - 5 || left >= maxScroll - 5;
+      casesPrev.disabled = atStart;
+      casesNext.disabled = atEnd;
+    }
+
+    casesSlider.addEventListener('scrollend', updateCasesButtons);
     casesSlider.addEventListener('scroll', function () {
-      clearTimeout(casesScrollT);
-      casesScrollT = setTimeout(clampCasesScroll, 150);
+      clearTimeout(casesSlider._btnT);
+      casesSlider._btnT = setTimeout(updateCasesButtons, 100);
     });
+    setTimeout(updateCasesButtons, 100);
 
     var casesCharacterWrap = document.getElementById('cases-character-wrap');
-    var casesFlipShowMs = 320;   /* время показа active (робот «перелистнул»), затем возврат в default */
-    var casesTransitionMs = 350; /* длительность CSS transition смены кадра */
-    var casesBlockMs = casesFlipShowMs + casesTransitionMs; /* полный цикл: active + возврат в default */
+    var casesFlipShowMs = 320;
+    var casesTransitionMs = 350;
+    var casesBlockMs = casesFlipShowMs + casesTransitionMs;
     var isCasesFlipping = false;
 
     function triggerCasesFlip() {
       if (!casesCharacterWrap || isCasesFlipping) return;
       isCasesFlipping = true;
+      casesCharacterWrap.classList.remove('is-flipping-next');
       casesCharacterWrap.classList.add('is-flipping');
       setTimeout(function () {
         casesCharacterWrap.classList.remove('is-flipping');
@@ -114,24 +121,39 @@
       }, casesBlockMs);
     }
 
+    function triggerCasesFlipNext() {
+      if (!casesCharacterWrap || isCasesFlipping) return;
+      isCasesFlipping = true;
+      casesCharacterWrap.classList.remove('is-flipping');
+      casesCharacterWrap.classList.add('is-flipping-next');
+      setTimeout(function () {
+        casesCharacterWrap.classList.remove('is-flipping-next');
+      }, casesFlipShowMs);
+      setTimeout(function () {
+        isCasesFlipping = false;
+      }, casesBlockMs);
+    }
+
     casesPrev.addEventListener('click', function () {
-      if (isCasesFlipping) return;
+      if (isCasesFlipping || casesPrev.disabled) return;
       var step = getStep();
-      var setWidth = getSetWidth();
-      if (casesSlider.scrollLeft <= step) {
-        casesSlider.scrollLeft = setWidth - step;
-      }
-      casesSlider.scrollBy({ left: -step, behavior: 'smooth' });
+      var left = casesSlider.scrollLeft;
+      var target = Math.max(0, left - step);
+      casesSlider.scrollTo({ left: target, behavior: 'smooth' });
       triggerCasesFlip();
     });
 
     casesNext.addEventListener('click', function () {
+      if (casesNext.disabled || isCasesFlipping) return;
       var step = getStep();
-      var setWidth = getSetWidth();
-      if (casesSlider.scrollLeft >= setWidth - step) {
-        casesSlider.scrollLeft = 0;
+      var left = casesSlider.scrollLeft;
+      var maxLeft = getMaxScrollLeft();
+      var target = Math.min(left + step, maxLeft);
+      casesSlider.scrollTo({ left: target, behavior: 'smooth' });
+      triggerCasesFlipNext();
+      if (target >= maxLeft - 5) {
+        setTimeout(updateCasesButtons, 450);
       }
-      casesSlider.scrollBy({ left: step, behavior: 'smooth' });
     });
   }
 
