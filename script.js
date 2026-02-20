@@ -96,13 +96,33 @@
       casesScrollT = setTimeout(clampCasesScroll, 150);
     });
 
+    var casesCharacterWrap = document.getElementById('cases-character-wrap');
+    var casesFlipShowMs = 320;   /* время показа active (робот «перелистнул»), затем возврат в default */
+    var casesTransitionMs = 350; /* длительность CSS transition смены кадра */
+    var casesBlockMs = casesFlipShowMs + casesTransitionMs; /* полный цикл: active + возврат в default */
+    var isCasesFlipping = false;
+
+    function triggerCasesFlip() {
+      if (!casesCharacterWrap || isCasesFlipping) return;
+      isCasesFlipping = true;
+      casesCharacterWrap.classList.add('is-flipping');
+      setTimeout(function () {
+        casesCharacterWrap.classList.remove('is-flipping');
+      }, casesFlipShowMs);
+      setTimeout(function () {
+        isCasesFlipping = false;
+      }, casesBlockMs);
+    }
+
     casesPrev.addEventListener('click', function () {
+      if (isCasesFlipping) return;
       var step = getStep();
       var setWidth = getSetWidth();
       if (casesSlider.scrollLeft <= step) {
         casesSlider.scrollLeft = setWidth - step;
       }
       casesSlider.scrollBy({ left: -step, behavior: 'smooth' });
+      triggerCasesFlip();
     });
 
     casesNext.addEventListener('click', function () {
