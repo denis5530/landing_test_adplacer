@@ -84,6 +84,7 @@ html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 100px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero-number { animation: none; filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.35)); }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
@@ -547,10 +548,30 @@ main img:hover {
   font-size: var(--text-hero-big);
   font-weight: var(--weight-extrabold);
   color: var(--text);
-  background: linear-gradient(135deg, var(--text) 0%, var(--blue-mid) 50%, var(--cyan) 100%);
+  background: linear-gradient(110deg, var(--text) 0%, var(--blue-mid) 32%, var(--cyan) 42%, var(--cyan) 58%, var(--blue-mid) 68%, var(--text) 100%);
+  background-size: 220% 100%;
+  background-position: 0% center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  transition: filter 0.35s ease-out, background-position 0.35s ease-out;
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.3));
+}
+
+/* Блик по числу только при наведении на кнопку */
+.hero:has(.btn-hero:hover) .hero-number {
+  animation: hero-number-shine 1.8s ease-in-out infinite;
+}
+
+@keyframes hero-number-shine {
+  0%, 100% {
+    background-position: 0% center;
+    filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.3));
+  }
+  50% {
+    background-position: 100% center;
+    filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.5));
+  }
 }
 
 .hero-title-rest {
