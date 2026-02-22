@@ -2283,6 +2283,14 @@ main img:hover {
   73%, 100% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
 }
 
+/* При наведении на кнопку — пауза блика и биения; при уходе курсора оба продолжают с того же момента (синхронно) */
+.why-ecosystem:has(.why-ecosystem-cta:hover)::before {
+  animation-play-state: paused;
+}
+.why-ecosystem-cta:hover {
+  animation-play-state: paused;
+}
+
 @media (max-width: 1024px), (prefers-reduced-motion: reduce) {
   .why-ecosystem::before { animation: none; opacity: 0; }
   .why-ecosystem-cta { animation: none; }
