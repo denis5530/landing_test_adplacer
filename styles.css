@@ -2126,7 +2126,7 @@ main img:hover {
 .why-bg {
   position: absolute;
   right: 8%;
-  top: calc(-22% + 60px);
+  top: calc(-22% + 90px);
   transform: translateY(0) translateX(0);
   z-index: 0;
   pointer-events: none;
@@ -3392,7 +3392,7 @@ main img:hover {
     gap: var(--space-3);
   }
   .why-grid > * { grid-column: auto !important; }
-  .why-bg { width: 50%; max-width: 420px; right: 0; top: calc(-14% + 28px); opacity: 0.9; }
+  .why-bg { width: 50%; max-width: 420px; right: 0; top: calc(-14% + 58px); opacity: 0.9; }
   .why-bg .why-character { max-width: 100%; }
   .why-ecosystem-inner { flex-direction: column; align-items: stretch; gap: var(--space-3); padding: var(--space-4); min-height: 0; }
   .why-ecosystem-head { text-align: center; }
@@ -3463,7 +3463,7 @@ main img:hover {
   .why-grid > * { grid-column: auto !important; }
   .why-card { padding: var(--space-4) var(--space-3); }
   .why-num { font-size: 2rem; }
-  .why-bg { width: 100%; max-width: 360px; left: 50%; right: auto; transform: translate(-50%, -50%); }
+  .why-bg { width: 100%; max-width: 360px; left: 50%; right: auto; transform: translate(-50%, calc(-50% + 30px)); }
   .why-bg .why-character { max-width: 100%; max-height: min(260px, 35vh); opacity: 0.85; }
   .why-ecosystem { margin-top: var(--space-4); }
   .why-ecosystem-inner { padding: var(--space-3) var(--space-4); min-height: 0; }
