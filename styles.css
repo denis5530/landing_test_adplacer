@@ -2679,11 +2679,35 @@ main img:hover {
 }
 
 .price-name {
+  position: relative;
   font-size: var(--text-xl);
   font-weight: var(--weight-extrabold);
   color: var(--text);
   margin-bottom: var(--space-4);
   line-height: var(--leading-tight);
+}
+
+.price-name-trial {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  color: var(--cyan);
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.price-name-default {
+  transition: opacity 0.35s ease;
+}
+
+.pricing-grid .price-card:nth-child(2):hover .price-name-default {
+  opacity: 0;
+}
+
+.pricing-grid .price-card:nth-child(2):hover .price-name-trial {
+  opacity: 1;
+  color: var(--cyan);
 }
 
 .price-features {
