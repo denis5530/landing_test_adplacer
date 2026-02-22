@@ -1638,7 +1638,7 @@ main img:hover {
 
 .cases-character-wrap {
   position: absolute;
-  left: -85px;
+  left: -255px; /* ещё правее на 30px */
   bottom: -150px;
   z-index: 10;
   pointer-events: none;
@@ -1827,6 +1827,12 @@ main img:hover {
   line-height: 1.25;
   color: #fff;
   text-align: center;
+  transition: text-shadow var(--transition);
+}
+
+.case-card-cta:hover .case-card-cta-headline {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 .case-card-cta-body {
@@ -1840,6 +1846,20 @@ main img:hover {
 .case-card-cta-body .btn {
   width: 100%;
   min-height: 44px;
+  animation: case-cta-btn-pulse 2.5s ease-in-out infinite;
+}
+
+.case-card-cta-body .btn:hover {
+  animation: none;
+  box-shadow:
+    0 12px 32px rgba(6, 182, 212, 0.4),
+    0 0 32px rgba(56, 189, 248, 0.8),
+    0 0 48px rgba(56, 189, 248, 0.4);
+}
+
+@keyframes case-cta-btn-pulse {
+  0%, 100% { box-shadow: var(--shadow-sm), 0 0 0 1px rgba(6, 182, 212, 0.2), 0 0 16px rgba(56, 189, 248, 0.2); }
+  50% { box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3), 0 0 0 1px rgba(6, 182, 212, 0.35), 0 0 28px rgba(56, 189, 248, 0.45); }
 }
 
 .cases-slider-btn {
@@ -2980,7 +3000,7 @@ main img:hover {
   .flow-num { width: 44px; height: 44px; font-size: var(--text-lg); }
   .how-cta { margin-top: var(--space-6); }
   .how-cta-btn { width: 100%; max-width: 320px; min-height: 48px; }
-  .cases-character-wrap { left: 50%; transform: translateX(-50%); justify-content: center; bottom: -150px; z-index: 10; }
+  .cases-character-wrap { left: 50%; transform: translateX(calc(-50% - 170px)); justify-content: center; bottom: -150px; z-index: 10; }
   .cases-character { max-width: 450px; max-height: 270px; }
   .case-card { flex: 0 0 min(280px, 88vw); width: min(280px, 88vw); }
   .case-card-img { height: 140px; }
