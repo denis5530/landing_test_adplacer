@@ -2283,12 +2283,20 @@ main img:hover {
   73%, 100% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
 }
 
-/* При наведении на кнопку — пауза блика и биения; при уходе курсора оба продолжают с того же момента (синхронно) */
+/* При наведении на кнопку — пауза блика и биения */
 .why-ecosystem:has(.why-ecosystem-cta:hover)::before {
   animation-play-state: paused;
 }
 .why-ecosystem-cta:hover {
   animation-play-state: paused;
+}
+
+/* При снятии курсора перезапуск анимаций задаётся из JS (класс .why-ecosystem-anim-off) */
+.why-ecosystem-anim-off::before {
+  animation: none !important;
+}
+.why-ecosystem-anim-off .why-ecosystem-cta {
+  animation: none !important;
 }
 
 @media (max-width: 1024px), (prefers-reduced-motion: reduce) {
@@ -2418,7 +2426,7 @@ main img:hover {
     0 4px 16px rgba(0, 0, 0, 0.12),
     0 0 0 1px rgba(255, 255, 255, 0.5);
   overflow: hidden;
-  transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+  transition: box-shadow 0.35s ease, background 0.25s ease;
   animation: why-ecosystem-cta-pulse 2.3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   animation-delay: 1s;
 }
@@ -2520,7 +2528,8 @@ main img:hover {
 }
 
 .why-ecosystem-cta:hover {
-  animation: none;
+  animation-play-state: paused;
+  transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
   background: #fff;
   transform: translateY(-3px) scale(1.02);
   box-shadow:

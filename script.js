@@ -225,4 +225,18 @@
       document.body.classList.toggle('menu-open');
     });
   }
+
+  // Экосистема: при уходе курсора с кнопки перезапуск блика и биения с нуля (синхронность не сбивается)
+  var ecosystemBlock = document.querySelector('.why-ecosystem');
+  var ecosystemCta = document.querySelector('.why-ecosystem-cta');
+  if (ecosystemBlock && ecosystemCta) {
+    ecosystemCta.addEventListener('mouseleave', function () {
+      ecosystemBlock.classList.add('why-ecosystem-anim-off');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          ecosystemBlock.classList.remove('why-ecosystem-anim-off');
+        });
+      });
+    });
+  }
 })();
