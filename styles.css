@@ -2076,31 +2076,171 @@ main img:hover {
 
 /* Case meta/result are in main Cases block above */
 
-/* ===== Why ----- */
-.why-item {
-  text-align: center;
-  padding: var(--space-2) 0;
+/* ===== Why — композиция как «Что вы получаете»: двухколоночный верх, grid-12, те же карточки ----- */
+.section.why {
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-py) 0;
+  background: linear-gradient(180deg, #F8FBFF 0%, #F3F7FF 100%);
 }
 
-.why-icon-wrap {
-  margin-bottom: var(--space-3);
+.section.why::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.16) 0%, transparent 60%);
+  top: -150px;
+  right: -150px;
+  filter: blur(40px);
+  pointer-events: none;
 }
 
-.why-icon {
-  display: inline-block;
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-extrabold);
+.section.why::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 120, 255, 0.10) 0%, transparent 60%);
+  bottom: -150px;
+  left: -150px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.why-container {
+  position: relative;
+}
+
+.why-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.why-bg {
+  position: absolute;
+  right: 8%;
+  top: calc(-22% + 60px);
+  transform: translateY(0) translateX(0);
+  z-index: 0;
+  pointer-events: none;
+  width: 56%;
+  max-width: 580px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.why-ui {
+  position: absolute;
+  right: 8%;
+  top: 20%;
+  width: 120px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
+  border-radius: var(--radius);
+  border: 1px solid rgba(6, 182, 212, 0.12);
+  pointer-events: none;
+}
+
+.why-ui::after {
+  content: "";
+  position: absolute;
+  left: -40px;
+  bottom: -20px;
+  width: 80px;
+  height: 50px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.06) 0%, transparent 60%);
+  border-radius: var(--radius);
+  border: 1px solid rgba(6, 182, 212, 0.08);
+}
+
+.why-bg .why-character {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 8px 24px rgba(6, 182, 212, 0.18));
+  animation: why-levitate 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes why-levitate {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.why-content {
+  position: relative;
+  z-index: 1;
+}
+
+.why-section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.why-section-head .section-desc {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.why-grid {
+  align-items: stretch;
+}
+
+.why-card {
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+}
+
+.why-card:hover {
+  border-color: rgba(6, 182, 212, 0.25);
+  box-shadow: 0 12px 32px rgba(6, 182, 212, 0.12);
+  transform: none;
+}
+
+.why-card:hover .card-glow {
+  opacity: 0;
+}
+
+.why-card:hover .why-num {
   color: var(--cyan);
 }
 
-.why-item h3 {
+.why-num {
+  font-size: 2.5rem;
+  font-weight: var(--weight-extrabold);
+  color: var(--cyan);
+  line-height: var(--leading-tight);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
+  filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.25));
+}
+
+.why-card h3 {
   font-size: var(--text-lg);
   font-weight: var(--weight-bold);
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: var(--space-1);
+  line-height: var(--leading-snug);
 }
 
-.why-item p { font-size: var(--text-sm); color: var(--text-muted); }
+.why-card p {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: var(--leading-normal);
+}
 
 /* ===== Pricing (Airbnb: clear hierarchy, pill CTAs) ----- */
 .section.pricing {
@@ -2947,6 +3087,8 @@ main img:hover {
     gap: var(--space-3);
   }
   .why-grid > * { grid-column: auto !important; }
+  .why-bg { width: 50%; max-width: 420px; right: 0; top: calc(-14% + 28px); opacity: 0.9; }
+  .why-bg .why-character { max-width: 100%; }
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3);
@@ -3008,8 +3150,12 @@ main img:hover {
   .case-card-cta-headline { font-size: 1.875rem; }
   .cases-slider-wrap { gap: var(--space-2); }
   .cases-section-cta { margin-top: var(--space-4); }
-  .why-grid { grid-template-columns: 1fr; gap: var(--space-2); }
-  .why-item { padding: var(--space-2) 0; }
+  .why-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .why-grid > * { grid-column: auto !important; }
+  .why-card { padding: var(--space-4) var(--space-3); }
+  .why-num { font-size: 2rem; }
+  .why-bg { width: 100%; max-width: 360px; left: 50%; right: auto; transform: translate(-50%, -50%); }
+  .why-bg .why-character { max-width: 100%; max-height: min(260px, 35vh); opacity: 0.85; }
   .pricing-grid { grid-template-columns: 1fr; gap: var(--space-2); }
   .price-wrap {
     min-height: 0;
@@ -3092,6 +3238,7 @@ main img:hover {
   .section-title { font-size: 1.25rem; }
   .card { padding: var(--space-3); }
   .benefit-num { font-size: 1.75rem; }
+  .why-num { font-size: 1.75rem; }
   .benefit-num-wrap-div { font-size: 1.75rem; }
   .pain-list li { font-size: var(--text-sm); }
   .flow-num { width: 40px; height: 40px; font-size: var(--text-base); }
