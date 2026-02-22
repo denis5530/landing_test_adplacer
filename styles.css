@@ -2242,6 +2242,135 @@ main img:hover {
   line-height: var(--leading-normal);
 }
 
+/* Плашка «Экосистема» — премиальный уровень системы, следующий шаг (не ссылка) ----- */
+.why-ecosystem {
+  width: 100%;
+  margin-top: var(--space-6);
+  border-radius: var(--radius-xl);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.why-ecosystem-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(14, 116, 144, 0.08) 0%, rgba(6, 182, 212, 0.06) 25%, rgba(224, 242, 254, 0.5) 55%, rgba(240, 249, 255, 0.9) 100%),
+    url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12h24M12 0v24' stroke='%2306b6d4' stroke-width='0.3' fill='none' opacity='0.12'/%3E%3C/svg%3E");
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  border-radius: inherit;
+  box-shadow:
+    0 4px 20px rgba(6, 182, 212, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+    0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  backdrop-filter: blur(12px);
+}
+
+/* Полупрозрачные UI-карточки на фоне */
+.why-ecosystem-bg::before {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 18%;
+  width: 100px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.06) 0%, transparent 60%);
+  border-radius: var(--radius);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  pointer-events: none;
+}
+
+.why-ecosystem-bg::after {
+  content: "";
+  position: absolute;
+  bottom: 15%;
+  right: 8%;
+  width: 72px;
+  height: 44px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, transparent 55%);
+  border-radius: var(--radius);
+  border: 1px solid rgba(6, 182, 212, 0.08);
+  pointer-events: none;
+}
+
+.why-ecosystem-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  min-height: 88px;
+  position: relative;
+  z-index: 1;
+}
+
+.why-ecosystem-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 75% 100% at 75% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.why-ecosystem-head {
+  flex: 1;
+  min-width: 0;
+}
+
+.why-ecosystem-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: var(--weight-semibold);
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: var(--space-1);
+}
+
+.why-ecosystem-title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--text);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  margin: 0 0 2px 0;
+}
+
+.why-ecosystem-sub {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.why-ecosystem-cta-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.why-ecosystem-cta {
+  min-height: 52px;
+  padding: var(--space-2) var(--space-6);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  box-shadow:
+    var(--shadow-md),
+    0 0 0 1px rgba(6, 182, 212, 0.3),
+    0 0 24px rgba(6, 182, 212, 0.12);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.why-ecosystem-cta:hover {
+  box-shadow:
+    0 8px 28px rgba(6, 182, 212, 0.25),
+    0 0 0 1px rgba(6, 182, 212, 0.35),
+    0 0 32px rgba(6, 182, 212, 0.2);
+  transform: translateY(-1px);
+}
+
 /* ===== Pricing (Airbnb: clear hierarchy, pill CTAs) ----- */
 .section.pricing {
   position: relative;
@@ -3089,6 +3218,10 @@ main img:hover {
   .why-grid > * { grid-column: auto !important; }
   .why-bg { width: 50%; max-width: 420px; right: 0; top: calc(-14% + 28px); opacity: 0.9; }
   .why-bg .why-character { max-width: 100%; }
+  .why-ecosystem-inner { flex-direction: column; align-items: stretch; gap: var(--space-3); padding: var(--space-4); min-height: 0; }
+  .why-ecosystem-head { text-align: center; }
+  .why-ecosystem-cta-wrap { justify-content: center; }
+  .why-ecosystem-cta { width: 100%; justify-content: center; max-width: 280px; margin: 0 auto; }
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3);
@@ -3156,6 +3289,10 @@ main img:hover {
   .why-num { font-size: 2rem; }
   .why-bg { width: 100%; max-width: 360px; left: 50%; right: auto; transform: translate(-50%, -50%); }
   .why-bg .why-character { max-width: 100%; max-height: min(260px, 35vh); opacity: 0.85; }
+  .why-ecosystem { margin-top: var(--space-4); }
+  .why-ecosystem-inner { padding: var(--space-3) var(--space-4); min-height: 0; }
+  .why-ecosystem-title { font-size: var(--text-base); }
+  .why-ecosystem-sub { font-size: var(--text-xs); }
   .pricing-grid { grid-template-columns: 1fr; gap: var(--space-2); }
   .price-wrap {
     min-height: 0;
