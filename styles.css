@@ -3239,13 +3239,20 @@ main img:hover {
   line-height: var(--leading-normal);
 }
 
-.final-visual-top {
+.final-bonus-side {
   grid-column: 2;
   grid-row: 1;
-  align-self: flex-end;
+  align-self: flex-start;
+}
+
+.final-footer-row {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: var(--space-5);
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: var(--space-5);
 }
 
 .final-robot-wrap {
@@ -3255,6 +3262,7 @@ main img:hover {
   align-items: flex-end;
   justify-content: center;
   margin-top: 0;
+  margin-left: 385px;
 }
 
 .final-robot-shadow {
@@ -3288,8 +3296,8 @@ main img:hover {
 .final-robot-img-hover {
   position: absolute;
   left: 50%;
-  bottom: -65px;
-  transform: translateX(-50%);
+  bottom: 20px;
+  transform: translateX(-50%) scale(1.5);
   width: auto;
   max-width: min(480px, 40vw);
   max-height: 340px;
@@ -3306,7 +3314,7 @@ main img:hover {
 
 .final-robot-img-hover {
   opacity: 0;
-  transform: translateX(calc(-50% - 39px)) translateY(5px) scale(1.15);
+  transform: translateX(calc(-50% - 53px)) translateY(11px) scale(1.7);
 }
 
 .final-gift {
@@ -3352,9 +3360,9 @@ main img:hover {
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-2);
-  text-align: center;
+  text-align: left;
   margin-top: var(--space-1);
 }
 
@@ -3662,7 +3670,18 @@ main img:hover {
     align-items: center;
     text-align: center;
   }
-  .final-value-cards { justify-items: center; }
+  .final-bonus-side {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .final-footer-row {
+    grid-column: 1;
+    grid-row: 3;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
   .final-visual {
     justify-content: center;
     order: -1;
