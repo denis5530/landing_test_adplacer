@@ -592,8 +592,8 @@ main img:hover {
 
 .hero-number-digit {
   font-family: var(--font);
-  font-size: 1.35em;
-  vertical-align: -0.05em;
+  font-size: 1em;
+  vertical-align: baseline;
   letter-spacing: 0.02em;
 }
 
@@ -3127,7 +3127,7 @@ main img:hover {
 
 .final-main {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: clamp(var(--space-5), 6vw, var(--space-10));
   align-items: center;
   min-height: 520px;
