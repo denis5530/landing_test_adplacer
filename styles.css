@@ -602,6 +602,11 @@ main img:hover {
   animation: hero-number-shine 1.8s ease-in-out infinite;
 }
 
+/* Тот же блик для \"3 подарка\" в финальном блоке при ховере на кнопке */
+.final-section:has(.final-cta-btn:hover) .final-header .hero-number {
+  animation: hero-number-shine 1.8s ease-in-out infinite;
+}
+
 @keyframes hero-number-shine {
   0%, 100% {
     background-position: 0% center;
@@ -3262,7 +3267,7 @@ main img:hover {
   grid-column: 2;
   grid-row: 1;
   align-self: flex-start;
-  margin-top: 0;
+  margin-top: 30px;
 }
 
 .final-footer-row {
