@@ -3015,7 +3015,7 @@ main img:hover {
 .final-section {
   position: relative;
   overflow: hidden;
-  padding: clamp(72px, 10vw, 112px) 0 clamp(80px, 11vw, 128px);
+  padding: var(--section-py) 0;
   background: linear-gradient(180deg, #F8FBFF 0%, #F3F7FF 100%);
 }
 
@@ -3139,8 +3139,8 @@ main img:hover {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(var(--space-5), 6vw, var(--space-10));
   align-items: flex-start;
-  min-height: 440px;
-  padding: var(--space-4) 0;
+  min-height: 0;
+  padding: 0;
   border-radius: var(--radius-xl);
   position: relative;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.04));
