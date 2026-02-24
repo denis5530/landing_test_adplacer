@@ -3184,7 +3184,7 @@ main img:hover {
 }
 
 .final-subtitle {
-  margin-top: var(--space-3);
+  margin-top: 4px;
 }
 
 /* Value cards — glass, строки на всю ширину справа */
@@ -3227,10 +3227,10 @@ main img:hover {
 /* Иконка снаружи на уголке карточки, верстка текста не сдвигается */
 .final-value-corner-icon {
   position: absolute;
-  top: -67px;
-  left: -67px;
-  width: 144px;
-  height: 144px;
+  top: -52px;
+  left: -27px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
