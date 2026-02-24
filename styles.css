@@ -640,6 +640,10 @@ main img:hover {
 
 .hero-subtitle strong { color: var(--cyan); }
 
+.final-section .hero-title-context strong {
+  color: var(--cyan);
+}
+
 .hero-trust {
   font-size: var(--text-sm);
   color: var(--text-dim);
@@ -3127,7 +3131,7 @@ main img:hover {
 
 .final-main {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(var(--space-5), 6vw, var(--space-10));
   align-items: center;
   min-height: 520px;
@@ -3248,7 +3252,7 @@ main img:hover {
 .final-footer-row {
   grid-column: 1 / -1;
   grid-row: 2;
-  margin-top: var(--space-5);
+  margin-top: var(--space-3);
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
