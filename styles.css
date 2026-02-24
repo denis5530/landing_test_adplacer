@@ -3010,7 +3010,7 @@ main img:hover {
 .final-section {
   position: relative;
   overflow: hidden;
-  padding: clamp(96px, 12vw, 140px) 0 clamp(100px, 14vw, 160px);
+  padding: clamp(72px, 10vw, 112px) 0 clamp(80px, 11vw, 128px);
   background: linear-gradient(180deg, #F8FBFF 0%, #F3F7FF 100%);
 }
 
@@ -3134,8 +3134,8 @@ main img:hover {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(var(--space-5), 6vw, var(--space-10));
   align-items: flex-start;
-  min-height: 520px;
-  padding: var(--space-6) 0;
+  min-height: 440px;
+  padding: var(--space-4) 0;
   border-radius: var(--radius-xl);
   position: relative;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.04));
@@ -3197,6 +3197,7 @@ main img:hover {
 }
 
 .final-value-card {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
@@ -3223,16 +3224,25 @@ main img:hover {
   transform: translateY(-2px);
 }
 
-.final-value-icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+/* Иконка снаружи на уголке карточки, верстка текста не сдвигается */
+.final-value-corner-icon {
+  position: absolute;
+  top: -67px;
+  left: -67px;
+  width: 144px;
+  height: 144px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--cyan);
-  background: rgba(56, 189, 248, 0.12);
-  border-radius: 10px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.final-value-corner-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
 }
 
 .final-value-title {
