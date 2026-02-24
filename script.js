@@ -186,8 +186,23 @@
     onScrollParallax();
   }
 
+  // Final section: subtle parallax on atmo layer
+  var finalSection = document.querySelector('.final-section');
+  var finalAtmo = document.querySelector('.final-atmo');
+  if (!prefersReducedMotion && finalSection && finalAtmo) {
+    window.addEventListener('scroll', function () {
+      requestAnimationFrame(function () {
+        var rect = finalSection.getBoundingClientRect();
+        var center = rect.top + rect.height / 2;
+        var viewportCenter = window.innerHeight / 2;
+        var offset = (viewportCenter - center) * 0.03;
+        finalAtmo.style.transform = 'translateY(' + Math.round(offset) + 'px)';
+      });
+    }, { passive: true });
+  }
+
   // Scroll reveal with stagger
-  var revealEls = document.querySelectorAll('.section-head, .card, .benefit-card, .flow-step, .case-card, .why-item, .price-card, .faq-item, .pain-content, .benefits-character, .pain-character, .final-section .final-content, .final-section .final-robot-card');
+  var revealEls = document.querySelectorAll('.section-head, .card, .benefit-card, .flow-step, .case-card, .why-item, .price-card, .faq-item, .pain-content, .benefits-character, .pain-character, .final-section .reveal');
   var revealObs = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
@@ -223,6 +238,22 @@
       nav.classList.toggle('nav-open');
       burger.classList.toggle('burger-open');
       document.body.classList.toggle('menu-open');
+    });
+  }
+
+  // Final CTA: ripple effect on click
+  var finalCta = document.querySelector('.js-final-cta');
+  if (finalCta) {
+    finalCta.addEventListener('click', function (e) {
+      var rect = this.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var ripple = document.createElement('span');
+      ripple.className = 'final-cta-ripple';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      this.appendChild(ripple);
+      setTimeout(function () { ripple.remove(); }, 600);
     });
   }
 

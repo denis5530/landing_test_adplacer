@@ -7,7 +7,7 @@
   <meta name="description" content="20–30 заявок в день с одного аккаунта. IT-сервис автоматизации продвижения на Авито. Рост заявок в 3 раза.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Patrick+Hand&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -653,37 +653,60 @@
     </section>
 
     <section class="section final-section" id="final" aria-labelledby="final-heading">
+      <!-- Layer 1: фон -->
       <div class="final-bg" aria-hidden="true"></div>
+      <div class="final-spotlight" aria-hidden="true"></div>
+      <!-- Layer 2: атмосфера -->
+      <div class="final-atmo" aria-hidden="true">
+        <div class="final-atmo-blur final-atmo-blur-1"></div>
+        <div class="final-atmo-blur final-atmo-blur-2"></div>
+        <div class="final-atmo-glow final-atmo-glow-1"></div>
+        <div class="final-atmo-glow final-atmo-glow-2"></div>
+        <div class="final-atmo-shape final-atmo-shape-1"></div>
+        <div class="final-atmo-shape final-atmo-shape-2"></div>
+      </div>
+      <div class="final-noise" aria-hidden="true"></div>
+      <!-- Layer 3: контент -->
       <div class="container final-inner">
-        <div class="final-grid">
-          <div class="final-content">
-            <p class="final-eyebrow">Готовы подключиться</p>
-            <h2 class="final-headline" id="final-heading">Запустите систему и получайте 20–30+ заявок в день</h2>
-            <p class="final-sub">При подключении сейчас вы дополнительно получите доступ к бонусам — чтобы быстрее выйти на результат.</p>
-            <ul class="final-features" aria-label="Преимущества подключения сейчас">
-              <li class="final-feature">
-                <span class="final-feature-icon" aria-hidden="true">✓</span>
-                <span class="final-feature-text">Пробный период: 1 автозагрузка и 50 000 объявлений</span>
-              </li>
-              <li class="final-feature">
-                <span class="final-feature-icon" aria-hidden="true">✓</span>
-                <span class="final-feature-text">Обучение: пошаговое продвижение на Авито</span>
-              </li>
-              <li class="final-feature">
-                <span class="final-feature-icon" aria-hidden="true">✓</span>
-                <span class="final-feature-text">Сообщество: доступ к предпринимателям, продвигающимся на Авито</span>
-              </li>
-            </ul>
+        <div class="final-main">
+          <div class="final-header reveal">
+            <p class="final-eyebrow">Запустите систему сегодня и получите</p>
+            <h2 class="final-headline" id="final-heading">
+              <span class="hero-number"><span class="hero-number-digit">3</span> подарка</span>
+              <span class="hero-title-context">подключаясь сейчас получите бонусы — чтобы быстрее выйти на результат</span>
+            </h2>
           </div>
-          <div class="final-visual">
-            <img class="final-robot-img" src="assets/final.png" alt="" width="480" height="336" aria-hidden="true">
-
-            <img class="final-gift final-gift-1" src="assets/gift_1.png" alt="" aria-hidden="true">
-            <img class="final-gift final-gift-2" src="assets/gift_2.png" alt="" aria-hidden="true">
-            <img class="final-gift final-gift-3" src="assets/gift_3.png" alt="" aria-hidden="true">
-
+          <div class="final-visual-top reveal">
+            <div class="final-bonus-row final-value-cards" role="list" aria-label="Бонусы при подключении сейчас">
+              <article class="final-value-card" role="listitem">
+                <div class="final-value-body">
+                  <h3 class="final-value-title">Пробный период</h3>
+                  <p class="final-value-desc">1 автозагрузка и 50 000 объявлений</p>
+                </div>
+              </article>
+              <article class="final-value-card" role="listitem">
+                <div class="final-value-body">
+                  <h3 class="final-value-title">Обучение</h3>
+                  <p class="final-value-desc">Пошаговое продвижение на Авито</p>
+                </div>
+              </article>
+              <article class="final-value-card" role="listitem">
+                <div class="final-value-body">
+                  <h3 class="final-value-title">Сообщество</h3>
+                  <p class="final-value-desc">Доступ к предпринимателям, продвигающимся на Авито</p>
+                </div>
+              </article>
+            </div>
+            <div class="final-robot-wrap final-robot-final-wrap" aria-hidden="true">
+              <div class="final-robot-shadow"></div>
+              <div class="final-robot-glow"></div>
+              <img class="final-robot-img" src="assets/CTA_final.png" alt="">
+              <img class="final-robot-img-hover" src="assets/CTA_final_active.png" alt="">
+            </div>
             <div class="final-cta-wrap">
-              <a href="#cta" class="btn btn-primary btn-hero final-cta-btn" aria-label="Начать с бонусами">Начать с бонусами</a>
+              <a href="#cta" class="final-cta-btn js-final-cta" aria-label="Начать с бонусами">
+                <span class="final-cta-btn-text">Начать с бонусами</span>
+              </a>
               <p class="final-cta-microcopy">Без карты на старте · Настройка за 10 минут</p>
             </div>
           </div>
