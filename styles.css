@@ -1845,21 +1845,31 @@ main img:hover {
 }
 
 .case-card .case-meta,
-.case-card .case-result {
+.case-card .case-result,
+.case-card .case-desc {
   padding: 0 var(--space-4);
 }
 .case-meta {
   padding-top: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--text-dim);
   margin-bottom: 4px;
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--cyan);
 }
 .case-result {
-  padding-bottom: var(--space-4);
+  margin-bottom: 4px;
   font-size: var(--text-base);
   color: var(--text-muted);
 }
-.case-result strong { color: var(--cyan); }
+.case-result strong {
+  color: var(--cyan);
+}
+.case-desc {
+  padding-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
 
 /* CTA-карточка внутри кейсового слайдера — те же размеры, сетка, радиус, тень что и кейсы */
 .case-card-cta {
