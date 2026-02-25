@@ -602,6 +602,27 @@ main img:hover {
   animation: hero-number-shine 1.8s ease-in-out infinite;
 }
 
+/* Блик по цифрам в блоке «Возможности» при наведении на кнопку этой секции */
+.benefits:has(.benefits-cta .btn:hover) .benefit-num,
+.benefits:has(.benefits-cta .btn:hover) .benefit-num-prefix {
+  background: linear-gradient(
+    110deg,
+    var(--cyan) 0%,
+    var(--cyan-light) 35%,
+    var(--accent) 55%,
+    var(--cyan-light) 75%,
+    var(--cyan) 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.25));
+  animation: hero-number-shine 1.8s ease-in-out infinite;
+}
+
 /* Тот же блик для \"3 подарка\" в финальном блоке при ховере на кнопке */
 .final-section:has(.final-cta-btn:hover) .final-header .hero-number {
   animation: hero-number-shine 1.8s ease-in-out infinite;
@@ -2181,8 +2202,8 @@ main img:hover {
 
 .why-bg {
   position: absolute;
-  right: 8%;
-  top: calc(-22% + 90px);
+  right: calc(8% - 80px);
+  top: calc(-22% + 60px);
   transform: translateY(0) translateX(0);
   z-index: 0;
   pointer-events: none;
@@ -2219,7 +2240,7 @@ main img:hover {
 
 .why-bg .why-character {
   width: 100%;
-  max-width: 460px;
+  max-width: 500px;
   height: auto;
   object-fit: contain;
   opacity: 0.92;
