@@ -1844,25 +1844,30 @@ main img:hover {
   pointer-events: none; /* скрин не перехватывает hover — эффект только у карточки целиком */
 }
 
-.case-card .case-meta,
 .case-card .case-result,
 .case-card .case-desc {
   padding: 0 var(--space-4);
 }
-.case-meta {
-  padding-top: var(--space-3);
+.case-result {
   margin-bottom: 4px;
   font-size: var(--text-base);
   font-weight: 700;
   color: var(--cyan);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
-.case-result {
-  margin-bottom: 4px;
-  font-size: var(--text-base);
-  color: var(--text-muted);
+.case-meta {
+  display: inline;
+  margin-right: 6px;
+  font-size: 1em;
+  font-weight: inherit;
+  color: inherit;
 }
 .case-result strong {
-  color: var(--cyan);
+  color: inherit;
+  font-weight: inherit;
 }
 .case-desc {
   padding-bottom: var(--space-4);
