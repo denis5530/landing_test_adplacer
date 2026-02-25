@@ -257,6 +257,55 @@
     });
   }
 
+  // FAQ accordion: только один открыт, плавный max-height
+  var faqItems = document.querySelectorAll('.faq-item');
+  if (faqItems.length) {
+    var currentOpen = null;
+
+    faqItems.forEach(function (item) {
+      var btn = item.querySelector('.faq-question');
+      var answer = item.querySelector('.faq-answer');
+      var answerInner = item.querySelector('.faq-answer-inner');
+      if (!btn || !answer || !answerInner) return;
+
+      // ensure all collapsed on init
+      answer.style.maxHeight = '0px';
+
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+
+        // закрываем ранее открытый
+        if (currentOpen && currentOpen !== item) {
+          var openAnswer = currentOpen.querySelector('.faq-answer');
+          if (openAnswer) openAnswer.style.maxHeight = '0px';
+          currentOpen.classList.remove('is-open');
+        }
+
+        if (isOpen) {
+          // закрываем текущий
+          answer.style.maxHeight = '0px';
+          item.classList.remove('is-open');
+          currentOpen = null;
+        } else {
+          // открываем текущий
+          var h = answerInner.offsetHeight;
+          answer.style.maxHeight = h + 'px';
+          item.classList.add('is-open');
+          currentOpen = item;
+        }
+      });
+    });
+
+    // Пересчёт высоты для открытого при ресайзе
+    window.addEventListener('resize', function () {
+      if (!currentOpen) return;
+      var ans = currentOpen.querySelector('.faq-answer');
+      var inner = currentOpen.querySelector('.faq-answer-inner');
+      if (!ans || !inner) return;
+      ans.style.maxHeight = inner.offsetHeight + 'px';
+    });
+  }
+
   // Экосистема: при уходе курсора с кнопки перезапуск блика и биения с нуля (синхронность не сбивается)
   var ecosystemBlock = document.querySelector('.why-ecosystem');
   var ecosystemCta = document.querySelector('.why-ecosystem-cta');
