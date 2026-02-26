@@ -3689,14 +3689,12 @@ main img:hover {
 }
 
 .footer-links a {
-  display: inline-flex;
-  align-items: center;
+  display: block;
   text-decoration: none;
   margin-bottom: 2px;
   padding: 2px 0;
   border-radius: var(--radius);
   transition: color var(--transition);
-  min-height: 0;
 }
 
 .footer-links a:hover { color: var(--cyan); }
@@ -3743,9 +3741,9 @@ main img:hover {
   width: 48px;
   height: 48px;
   border-radius: 999px;
-  background: transparent;
+  background: #fff;
   box-shadow: var(--shadow-sm);
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .footer-social-btn img {
@@ -3755,7 +3753,6 @@ main img:hover {
 }
 
 .footer-social-btn:hover {
-  background: rgba(15, 23, 42, 0.32);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
